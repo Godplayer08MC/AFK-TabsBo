@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^22.13.11"
+    "@types/node": "^22.13.11",
+    "express": "^4.21.2",
+    "mineflayer": "^4.27.0",
+    "prismarine-auth": "^2.7.0"
   }
 }
