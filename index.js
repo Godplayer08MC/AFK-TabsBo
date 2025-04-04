@@ -13,7 +13,7 @@ app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
 const server = 'AnarchyNetwork.net'; 
 const port = 25565;  
-const username = '08villafuerte.ethan@gmail.com';  // Replace with your email
+const username = 'nateblack532@gmail.com';  // Replace with your email
 const cacheDir = './auth_cache'; 
 
 const authflow = new Authflow(username, cacheDir, {
@@ -33,7 +33,7 @@ async function createBot() {
 
     bot.on('login', () => {
         console.log('✅ Bot logged in!');
-        bot.chat('/msg Server Bot is AFK!');
+        bot.chat('/w EpicoMe Server Bot is AFK!');
     });
 
     bot.on('end', () => {
@@ -41,9 +41,17 @@ async function createBot() {
         setTimeout(createBot, 5000);
     });
 
-    bot.on('error', (err) => console.log(`❌ Error: ${err}`));
+    bot.on('error', (err) => {
+        console.log(`❌ Error: ${err}`);
+        console.log('🔄 Restarting bot in 10s...');
+        setTimeout(createBot, 10000);
+    });
 
-    bot.on('kicked', (reason) => console.log(`🚫 Kicked: ${reason}`));
+    bot.on('kicked', (reason) => {
+        console.log(`🚫 Kicked: ${reason}`);
+        console.log('🔄 Reconnecting in 5s...');
+        setTimeout(createBot, 5000);
+    });
 
     bot.on('spawn', () => {
         console.log('🎮 Bot spawned');
